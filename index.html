@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="header">
+      <p class="logo">PBO UAS</p>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="input-barang">
+          <p class="header1">Form Tambah Barang</p>
+          <div id="input"></div>
+        </div>
+        <div class="daftar-barang">
+          <p class="header1">Daftar Barang</p>
+          <div id="barang"></div>
+        </div>
+      </div>
+    </div>
+    <div class="container1">
+      <div class="row1">
+        <div class="tas-barang">
+          <p class="header1">Tas Barang</p>
+          <div id="tas"></div>
+        </div>
+        <div class="tas-item">
+          <p class="header1">Tas Items</p>
+          <div id="tas_item"></div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+      barang = [
+        { id: 1, nama: "satu", harga: 100, banyak: 1 },
+        { id: 2, nama: "dua", harga: 200, banyak: 2 },
+        { id: 3, nama: "tiga", harga: 300, banyak: 3 },
+      ];
+
+      tas = [{ id: 1, tanggal: "2024-01-03", total: 100, kasir: "hi" }];
+
+      tas_barang = [
+        { id: 1, idtas: 1, idbarang: 1, nama: "satu", harga: 100, banyak: 1, jumlah: 100 },
+        { id: 2, idtas: 1, idbarang: 3, nama: "tiga", harga: 300, banyak: 3, jumlah: 900 },
+      ];
+
+      input = ["ID", "Nama", "Harga", "Banyak"];
+      out = `<form name='frm'>`;
+      input.forEach(function myFunction(item, index) {
+        out += `${item}  <input class="input-brg"> <br>`;
+      });
+      out += `</form>`;
+
+      out += `<button onclick="input()"> Tambah </button>`;
+      document.getElementById("input").innerHTML = out;
+
+      function init() {
+        out = ``;
+        out = `<table>`;
+        out += `<tr>
+                        <th>ID</th>
+                        <th>Nama</th>
+                        <th>Harga</th>
+                        <th>Banyak</th>
+                        <th>Aksi</th>
+                        </tr>`;
+        barang.forEach(function myFunction(item, index) {
+          out += `<tr>
+                          <td>${item.id}</td>
+                          <td>${item.nama}</td>
+                          <td>${item.harga}</td>
+                          <td>${item.banyak}</td>
+                          <td><button class="btn-add" onclick="add(${item.id})"> Add </button>
+                              <button class="btn-update" onclick="update(${item.id})"> Update </button>
+                              <button class="btn-delete" onclick="hapus(${index})"> Delete </button></td>
+                        </tr>
+                 `;
+        });
+        out += `</table>`;
+        document.getElementById("barang").innerHTML = out;
+
+        out = ` <button onclick="baru()"> Baru </button> 
+                <button onclick="cetak()"> Cetak</button>
+                <button onclick="update()"> Update</button><br>`;
+        tas.forEach(function myFunction(item, index) {
+          out += "Tanggal :" + item.tanggal + " <br> ";
+          out += "Kasir :" + item.kasir + " <br> ";
+          out += "Kode :" + item.id + " <br> ";
+          out += "Total :" + item.total + " <br> ";
+        });
+        document.getElementById("tas").innerHTML = out;
+
+        out = ``;
+        out = `<table>`;
+        out += `<tr>
+      <th>ID Tas</th>
+      <th>ID Barang</th>
+      <th>Banyak Barang</th>
+      <th>Nama Barang</th>
+      <th>Harga Barang</th>
+      <th>Jumlah</th>
+      <th>Aksi</th>
+      </tr>`;
+        tas_barang.forEach(function myFunction(item, index) {
+          out += `<tr>
+        <td>${item.idtas}</td>
+        <td>${item.idbarang}</td>
+        <td>${item.banyak}</td>
+        <td>${item.nama}</td>
+        <td>${item.harga}</td>
+        <td>${item.jumlah}</td>
+        <td><button class="btn-delete" onclick="remove(${index})"> Remove </button></td>
+        </tr>`;
+        });
+
+        out += `</table>`;
+        document.getElementById("tas_item").innerHTML = out;
+      }
+
+      init();
+
+      add = function (i) {
+        item = barang.filter((e) => e.id === i);
+        tas_barang.push(item[0]);
+        init();
+      };
+
+      input = function () {
+        barang.push({
+          id: frm.elements[0].value,
+          nama: frm.elements[1].value,
+          harga: frm.elements[2].value,
+          banyak: frm.elements[3].value,
+        });
+        init();
+      };
+
+      update = function (id) {
+        document.getElementById("input");
+        var obj = data.find((item) => item.id === id);
+
+        input = obj.value;
+      };
+
+      baru = function () {
+        alert("baru");
+      };
+      remove = function (i) {
+        tas_barang.splice(i, 1);
+        init();
+      };
+      hapus = function (i) {
+        barang.splice(i, 1);
+        init();
+      };
+      cetak = function () {
+        window.print();
+      };
+    </script>
+  </body>
+</html>

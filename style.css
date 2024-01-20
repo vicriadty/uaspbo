@@ -1,0 +1,102 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "poppins", sans serif;
+  font-size: 18px;
+}
+
+body {
+  display: flex;
+  /* align-items: center; */
+  /* justify-content: center; */
+  flex-direction: column;
+}
+
+.header {
+  height: 80px;
+  width: 100%;
+  background-color: goldenrod;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  grid-gap: 180px;
+  margin-bottom: 100px;
+}
+
+.row1 {
+  display: flex;
+  justify-content: center;
+  grid-gap: 180px;
+}
+
+.header .logo {
+  font-size: 30px;
+  font-weight: bold;
+  color: white;
+}
+
+.header1 {
+  margin: 0px 0px 15px 0px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.input-barang {
+  margin: 20px 0px 0px 20px;
+}
+
+.input-barang button {
+  margin-top: 10px;
+  padding: 3px;
+  border-radius: 5px;
+  background-color: green;
+  cursor: pointer;
+}
+
+.input-brg {
+  margin: 10px 0px 8px 0px;
+}
+
+.daftar-barang {
+  margin: 20px 0px 0px 20px;
+}
+
+.tas-item {
+  margin: 20px 0px 0px 20px;
+}
+
+.tas-barang {
+  margin: 20px 0px 0px 20px;
+}
+
+table,
+th,
+td {
+  border: 1px solid;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 25px 10px;
+  min-width: 400px;
+  text-align: center;
+}
+
+.btn-add {
+  background-color: green;
+}
+.btn-update {
+  background-color: yellow;
+}
+.btn-delete {
+  background-color: red;
+}
